@@ -5,10 +5,10 @@ category: articoli
 categoriesText: dieta mediterranea salute benessere
 image: /assets/uploads/dietamediterranea.jpg
 excerpt: >
-  Ogni anno il 16 novembre si celebra la Giornata della Dieta Mediterranea,
-  un’occasione per ricordare che non parliamo solo di un modello alimentare, ma
-  di un vero e proprio stile di vita, riconosciuto come Patrimonio culturale
-  immateriale dell’umanità.
+  Ogni anno si celebra la Giornata della Dieta Mediterranea, un’occasione per
+  ricordare che non parliamo solo di un modello alimentare, ma di un vero e
+  proprio stile di vita, riconosciuto come Patrimonio culturale immateriale
+  dell’umanità.
 
   La Dieta Mediterranea rappresenta uno dei modelli nutrizionali più studiati al mondo, con solide evidenze scientifiche a supporto dei suoi benefici sulla salute metabolica, cardiovascolare e sulla longevità.
 ---
