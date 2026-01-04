@@ -4,8 +4,7 @@ date: 2025-10-07T17:21:00.000+02:00
 category: risposte
 categoriesText: carboidrati sera abitudini alimentari peso
 image: /assets/uploads/carboidrati.jpg
-excerpt: |
-  No, i carboidrati non fanno ingrassare di per sé se consumati la sera.
+excerpt: No, i carboidrati non fanno ingrassare di per sé se consumati la sera.
 ---
 No, i carboidrati non fanno ingrassare di per sé se consumati la sera.
 
