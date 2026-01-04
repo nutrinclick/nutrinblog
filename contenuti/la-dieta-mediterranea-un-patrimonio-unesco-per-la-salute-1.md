@@ -1,5 +1,5 @@
 ---
-title: " La Dieta Mediterranea: un patrimonio UNESCO per la salute"
+title: " La Dieta Mediterranea un patrimonio UNESCO per la salute"
 date: 2025-11-16T16:12:00.000+01:00
 category: articoli
 categoriesText: dieta mediterranea salute benessere
