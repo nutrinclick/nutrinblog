@@ -1,11 +1,11 @@
 ---
-title: "Le ricette delle feste: i cannelloni rivisitati"
+title: "Le ricette delle feste: i cannelloni all'insu'"
 date: 2026-01-03T18:20:00.000+01:00
 category: ricette
 categoriesText: "ricette feste Sara Sandri "
-image: /assets/uploads/cannelloni.jpg
+image: /assets/uploads/cannellonisandri.jpg
 excerpt: >-
-  Primi giorni dell'anno, è ancora festa!
+  Primi giorni dell'anno, è ancora festa.
 
   Ecco una ricetta sana e gustosa a cura della Dott.ssa Sara Sandri, nutrizionista nutrinclick.
 author: Dott.ssa Sara Sandri
