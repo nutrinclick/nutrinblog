@@ -4,9 +4,10 @@ date: 2025-09-23T16:23:00.000+02:00
 category: risposte
 categoriesText: colazione dimagrimento
 image: /assets/uploads/colazione.jpg
-author: Saltare la colazione non è automaticamente una strategia efficace per
+excerpt: Saltare la colazione non è automaticamente una strategia efficace per
   dimagrire. Per alcune persone può funzionare, per altre può addirittura avere
   l’effetto opposto.
+author: ""
 ---
 Saltare la colazione non è automaticamente una strategia efficace per dimagrire. Per alcune persone può funzionare, per altre può addirittura avere l’effetto opposto.
 
