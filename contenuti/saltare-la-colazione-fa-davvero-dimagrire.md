@@ -31,3 +31,13 @@ La colazione non è obbligatoria per tutti, ma quando è presente dovrebbe esser
 \- coerente con lo stile di vita
 
 **👉 Più che “saltare o non saltare”, conta come è strutturata l’intera giornata alimentare.**
+
+
+
+**⚠️ Disclaimer** 
+
+*📌 Le informazioni riportate hanno finalità esclusivamente informative e divulgative.*
+
+*Non costituiscono consulenza medica o nutrizionale personalizzata e non sostituiscono il parere del professionista.*
+
+*Ogni situazione individuale richiede una valutazione specifica da parte di un nutrizionista o medico qualificato.*
