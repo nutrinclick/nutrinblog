@@ -2,7 +2,7 @@
 title: Le ricette delle feste i pizzoccheri
 date: 2026-01-05T18:23:00.000+01:00
 category: ricette
-categoriesText: riette feste sara sandri
+categoriesText: ricette feste sara sandri
 image: /assets/uploads/pizzoccherisandri.jpg
 excerpt: Fino all'Epifania è ancora festa. Ecco una ricetta sana e gustosa a
   cura della Dottoressa Sara Sandri nutrizionista nutrinclick.
