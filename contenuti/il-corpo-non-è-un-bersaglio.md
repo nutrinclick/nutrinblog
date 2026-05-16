@@ -1,5 +1,5 @@
 ---
-title: Il corpo non è un bersaglio
+title: Il fucsia del 16 maggio
 date: 2026-05-16T14:33:00.000+02:00
 category: articoli
 categoriesText: "#bodyshaming #giornatanazionalebodyshaming #bodypositivity
@@ -7,7 +7,9 @@ categoriesText: "#bodyshaming #giornatanazionalebodyshaming #bodypositivity
 image: /assets/uploads/bodymaggio.jpg
 excerpt: Body shaming autostima e il ruolo cruciale dell'alimentazione consapevole
 ---
-Oggi, 16 maggio, l'Italia celebra per la prima volta la Giornata Nazionale contro il Body Shaming, istituita con la legge 150 del 3 ottobre 2025. Un riconoscimento istituzionale importante per un fenomeno che non è mai "solo uno scherzo": la denigrazione dell'aspetto fisico produce effetti reali sulla salute psicologica, sul rapporto con il cibo e sul benessere complessivo della persona. 
+Il corpo non è un bersaglio!
+
+ Oggi, 16 maggio, l'Italia celebra per la prima volta la Giornata Nazionale contro il Body Shaming, istituita con la legge 150 del 3 ottobre 2025. Un riconoscimento istituzionale importante per un fenomeno che non è mai "solo uno scherzo": la denigrazione dell'aspetto fisico produce effetti reali sulla salute psicologica, sul rapporto con il cibo e sul benessere complessivo della persona. 
 
 **Una data che segna un cambiamento culturale**
 
@@ -66,8 +68,6 @@ La prima Giornata Nazionale contro il Body Shaming arriva in un momento in cui i
 Riconoscere il body shaming per quello che è, una forma di violenza psicologica, non uno scherzo, non una critica costruttiva, non un consiglio disinteressato, è il primo passo. Il secondo è costruire, attorno alle persone, contesti in cui il corpo sia trattato con rispetto: nelle famiglie, nelle scuole, nei luoghi di lavoro, negli studi medici e nutrizionali.
 
 ***Se stai attraversando un momento difficile nel rapporto con il tuo corpo o con il cibo, sappi che non devi affrontarlo da solo. Un nutrizionista competente, affiancato quando necessario da un professionista della salute mentale, può accompagnarti in un percorso che parte dal rispetto, non dalla vergogna.***
-
-
 
 **⚠️ Disclaimer**
 
