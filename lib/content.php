@@ -61,6 +61,20 @@ function nutrin_scalar(array $metadata, string $key, string $default = ''): stri
     return trim((string) $metadata[$key]);
 }
 
+function nutrin_normalize_date_value($value): string
+{
+    if ($value instanceof DateTimeInterface) return $value->setTimezone(new DateTimeZone('UTC'))->format('Y-m-d\TH:i:s\Z');
+    if (is_int($value) || is_float($value) || (is_string($value) && preg_match('/\A\d{9,12}\z/', trim($value)))) {
+        return gmdate('Y-m-d\TH:i:s\Z', (int) $value);
+    }
+    return is_scalar($value) ? trim((string) $value) : '';
+}
+
+function nutrin_date(array $metadata): string
+{
+    return array_key_exists('date', $metadata) ? nutrin_normalize_date_value($metadata['date']) : '';
+}
+
 function nutrin_excerpt(string $body, int $max = 0): string
 {
     $text = strip_tags($body);
@@ -89,7 +103,7 @@ function nutrin_item_from_document(string $filename, array $metadata, string $bo
     $slug = nutrin_slug_from_filename($filename);
     if ($slug === '') throw new RuntimeException('Nome file Markdown non valido.');
     $category = strtolower(nutrin_scalar($metadata, 'category', nutrin_scalar($metadata, 'type')));
-    $date = nutrin_scalar($metadata, 'date');
+    $date = nutrin_date($metadata);
 
     return [
         'slug' => $slug,
@@ -145,11 +159,13 @@ function nutrin_load_index(): ?array
         if (!is_string($raw)) throw new RuntimeException('Indice non leggibile.');
         $items = json_decode($raw, true, 512, JSON_THROW_ON_ERROR);
         if (!is_array($items)) throw new RuntimeException('Formato indice non valido.');
-        foreach ($items as $item) {
+        foreach ($items as &$item) {
             if (!is_array($item) || !isset($item['slug'], $item['title'], $item['date'], $item['category'])) {
                 throw new RuntimeException('Voce indice non valida.');
             }
+            $item['date'] = nutrin_normalize_date_value($item['date']);
         }
+        unset($item);
         if (!nutrin_index_is_fresh($path, $items)) return null;
         nutrin_sort_items($items);
         return $items;
