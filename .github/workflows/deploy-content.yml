@@ -1,0 +1,75 @@
+name: Deploy contenuti su Register.it
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'contenuti/*.md'
+      - 'assets/uploads/**'
+      - 'lib/content.php'
+      - 'scripts/build-content-index.php'
+      - 'composer.json'
+      - 'composer.lock'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-contenuti-register
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_SERVER: ${{ secrets.FTP_SERVER }}
+      FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+      FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configura PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring
+          coverage: none
+
+      - name: Installa il parser YAML
+        run: composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+      - name: Genera content-index.json
+        run: php scripts/build-content-index.php
+
+      - name: Prepara esclusivamente i file pubblicabili
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p deploy/contenuti deploy/assets/uploads
+          find contenuti -maxdepth 1 -type f -name '*.md' -exec cp -p '{}' deploy/contenuti/ \;
+          cp -p contenuti/content-index.json deploy/contenuti/
+          if [ -d assets/uploads ]; then
+            cp -a assets/uploads/. deploy/assets/uploads/
+          fi
+
+      - name: Verifica configurazione FTP
+        shell: bash
+        run: |
+          set -euo pipefail
+          for variable in FTP_SERVER FTP_USERNAME FTP_PASSWORD; do
+            if [ -z "${!variable:-}" ]; then
+              echo "Secret obbligatorio mancante: $variable" >&2
+              exit 1
+            fi
+          done
+
+      - name: Installa client FTP
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Carica contenuti senza cancellare altri file
+        shell: bash
+        run: |
+          set -euo pipefail
+          lftp -c "set cmd:fail-exit yes; set ftp:ssl-allow no; open --user \"$FTP_USERNAME\" --password \"$FTP_PASSWORD\" ftp://$FTP_SERVER; mirror --reverse --only-newer --verbose --no-perms deploy/contenuti/ /contenuti/; mirror --reverse --only-newer --verbose --no-perms deploy/assets/uploads/ /assets/uploads/; bye"
