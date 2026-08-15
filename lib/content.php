@@ -146,11 +146,11 @@ function nutrin_scan_local_items(): array
 
 function nutrin_index_is_fresh(string $indexPath, array $items): bool
 {
-    $files = nutrin_markdown_files();
-    if (count($files) !== count($items)) return false;
-    $indexTime = filemtime($indexPath) ?: 0;
-    foreach ($files as $file) {
-        if ((filemtime($file) ?: 0) > $indexTime) return false;
+    foreach ($items as $item) {
+        $slug = isset($item['slug']) && is_string($item['slug']) ? $item['slug'] : '';
+        if (!nutrin_slug_is_valid($slug)) return false;
+        $file = nutrin_content_directory() . DIRECTORY_SEPARATOR . $slug . '.md';
+        if (!is_file($file) || !is_readable($file)) return false;
     }
     return true;
 }
