@@ -89,7 +89,12 @@ function nutrin_excerpt(string $body, int $max = 0): string
 function nutrin_slug_from_filename(string $filename): string
 {
     $slug = preg_replace('/\.md\z/i', '', basename($filename)) ?? '';
-    return preg_match('/\A[a-zA-Z0-9-]+\z/', $slug) ? $slug : '';
+    return nutrin_slug_is_valid($slug) ? $slug : '';
+}
+
+function nutrin_slug_is_valid(string $slug): bool
+{
+    return preg_match('/\A[\p{L}\p{N}]+(?:-[\p{L}\p{N}]+)*\z/u', $slug) === 1;
 }
 
 function nutrin_markdown_files(): array
@@ -195,7 +200,7 @@ function nutrin_write_index(?string $destination = null): array
 
 function nutrin_load_post(string $slug): array
 {
-    if (!preg_match('/\A[a-zA-Z0-9-]+\z/', $slug)) throw new InvalidArgumentException('Slug non valido.');
+    if (!nutrin_slug_is_valid($slug)) throw new InvalidArgumentException('Slug non valido.');
     $path = nutrin_content_directory() . DIRECTORY_SEPARATOR . $slug . '.md';
     if (!is_file($path) || !is_readable($path)) throw new RuntimeException('Contenuto locale non trovato.');
     $raw = file_get_contents($path);
