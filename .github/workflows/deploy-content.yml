@@ -73,4 +73,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          lftp -c "set cmd:fail-exit yes; set ftp:ssl-allow no; open --user \"$FTP_USERNAME\" --password \"$FTP_PASSWORD\" ftp://$FTP_SERVER; mirror --reverse --delete --only-newer --verbose --no-perms --include-glob '*.md' --exclude-glob '*' deploy/contenuti/ /contenuti/; put -O /contenuti/ deploy/contenuti/content-index.json; mirror --reverse --only-newer --verbose --no-perms deploy/assets/uploads/ /assets/uploads/; bye"
+          remote_list="$(mktemp)"
+          lftp -c "set cmd:fail-exit yes; set ftp:ssl-allow no; open --user \"$FTP_USERNAME\" --password \"$FTP_PASSWORD\" ftp://$FTP_SERVER; cls -1 /contenuti/*.md; bye" > "$remote_list"
+
+          while IFS= read -r remote_path; do
+            remote_file="${remote_path##*/}"
+            if [[ "$remote_file" == *.md && ! -f "deploy/contenuti/$remote_file" ]]; then
+              echo "Elimino Markdown non più presente nel repository: $remote_file"
+              lftp -c "set cmd:fail-exit yes; set ftp:ssl-allow no; open --user \"$FTP_USERNAME\" --password \"$FTP_PASSWORD\" ftp://$FTP_SERVER; rm \"/contenuti/$remote_file\"; bye"
+            fi
+          done < "$remote_list"
+
+          rm -f "$remote_list"
+          lftp -c "set cmd:fail-exit yes; set ftp:ssl-allow no; open --user \"$FTP_USERNAME\" --password \"$FTP_PASSWORD\" ftp://$FTP_SERVER; mirror --reverse --only-newer --verbose --no-perms deploy/contenuti/ /contenuti/; put -O /contenuti/ deploy/contenuti/content-index.json; mirror --reverse --only-newer --verbose --no-perms deploy/assets/uploads/ /assets/uploads/; bye"
